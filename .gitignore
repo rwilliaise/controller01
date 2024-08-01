@@ -1,0 +1,6 @@
+
+# build artifacts
+build/
+
+# clangd, ccls
+.cache/
