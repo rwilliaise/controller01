@@ -16,10 +16,10 @@ file(
 
 set(SRCS "")
 foreach(src ${COMMON_SRCS})
-    set(SRCS "${SRCS} common.${src}")
+    set(SRCS "${SRCS};common.${src}")
 endforeach(src ${COMMON_SRCS})
-string(STRIP ${SRCS} COMMON_SRCS)
+string(STRIP "${SRCS}" COMMON_SRCS)
 
 find_program(LUA_PROGRAM NAMES lua)
-add_subdirectory(computercraft/1_89_2)
+add_subdirectory(computercraft)
 

@@ -16,10 +16,6 @@ function cc_config.new(filename)
     return out:constructor(filename) or out
 end
 
-function cc_config:constructor(filename)
-    config:constructor(filename)
-end
-
 function cc_config:save(filename)
     local file = fs.open(filename, "w")
     file.write(textutils.serialize(self._internal))
@@ -28,6 +24,10 @@ end
 
 function cc_config:load(filename)
     local file = fs.open(filename, "r")
+    if not file then
+        self._internal = {}
+        return
+    end
     local contents = file.readAll()
     file.close()
     self._internal = textutils.unserialize(contents)

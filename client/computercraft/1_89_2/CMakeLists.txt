@@ -6,10 +6,10 @@ set(TURTLE_SRCS
 
 set(SRCS "")
 foreach(src ${TURTLE_SRCS})
-    set(SRCS "${SRCS} computercraft.1_89_2.${src}")
+    set(SRCS "${SRCS};computercraft.1_89_2.${src}")
 endforeach(src ${TURTLE_SRCS})
 
-add_custom_target(computercraft_1_89_2
+add_custom_target(computercraft_1_89_2 ALL
     DEPENDS
         "${CMAKE_CURRENT_BINARY_DIR}/dist_large.lua"
         "${CMAKE_CURRENT_BINARY_DIR}/dist.lua"
@@ -17,6 +17,7 @@ add_custom_target(computercraft_1_89_2
 
 add_custom_command(
     OUTPUT
+        "${CMAKE_CURRENT_BINARY_DIR}/fake_dist_that_doesn't_exist.lua"
         "${CMAKE_CURRENT_BINARY_DIR}/dist_large.lua"
     COMMAND
         ${LUA_PROGRAM} ${AMALG_LUA}
@@ -35,6 +36,8 @@ add_custom_command(
             ${CMAKE_CURRENT_BINARY_DIR}/dist_large.lua
             ${CMAKE_CURRENT_BINARY_DIR}/dist.lua
     DEPENDS
-        "${CMAKE_CURRENT_BINARY_DIR}/dist_large.lua"
+        "${CMAKE_CURRENT_BINARY_DIR}/fake_dist_that_doesn't_exist.lua"
 )
+
+
 

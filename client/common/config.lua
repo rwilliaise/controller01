@@ -39,6 +39,13 @@ function config:set(key, value)
     self._internal[key] = value
 end
 
+function config:upgrade()
+    if GLOBAL_CONFIG then
+        print("[?] replacing global config")
+    end
+    GLOBAL_CONFIG = self
+end
+
 -- methods that must be implemented on client versions
 function config:save(filename)
     error("'save' unimplemented on " .. tostring(self))
@@ -48,3 +55,5 @@ end
 function config:load(filename)
     error("'load' unimplemented on " .. tostring(self))
 end
+
+return config

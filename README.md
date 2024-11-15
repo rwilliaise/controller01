@@ -10,11 +10,8 @@ Uses a relatively new version of CMake.
 mkdir build && cd build
 cmake ..
 
-# building server
+# building server and client version
 cmake --build .
-
-# building client version
-cmake --build . --target computercraft_1_89_2
 ```
 
 Clients generate a minified `dist.lua` file in their respective cmake build

@@ -36,7 +36,7 @@ function socket:send(data)
     error("'send' unimplemented on " .. tostring(self))
 end
 
-function socket:receive()
+function socket:receive(timeout)
     error("'receive' unimplemented on " .. tostring(self))
 end
 
